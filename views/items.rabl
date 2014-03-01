@@ -1,3 +1,3 @@
 collection @items
-attributes :id, :title
-child(:images) { attributes :id, :capture, :url }
+attributes :uuid, :title, :status, :description, :price
+child(:images) { attributes :uuid, :capture, :url }
