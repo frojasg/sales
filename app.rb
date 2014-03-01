@@ -15,7 +15,19 @@ Rabl.configure do |config|
 end
 
 get '/' do
+  html :index
+end
+
+get '/items' do
   @items = Item.all
   rabl :items, format: "json"
 end
 
+#post '/items' do
+#  @item = Item.create(params)
+#  rabl :item, format: 'json'
+#end
+
+def html view
+  File.read(File.join('public', "#{view}.html"))
+end
