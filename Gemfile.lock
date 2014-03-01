@@ -62,6 +62,7 @@ GEM
       ripl-rack (>= 0.2.0)
       sinatra (>= 1.2.1)
     tzinfo (0.3.38)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
@@ -76,3 +77,4 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   tux
+  uuidtools
