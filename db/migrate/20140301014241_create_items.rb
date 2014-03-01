@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :uuid, :limit => 36
       t.string :title
-      t.string :status
+      t.string :status, default: 'available'
       t.text :description
       t.integer :price
       t.timestamps
