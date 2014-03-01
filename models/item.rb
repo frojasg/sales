@@ -11,6 +11,10 @@
 #  updated_at  :datetime
 #
 
+require './lib/uuid_support'
+
 class Item < ActiveRecord::Base
+  include UUIDSupport
+
   has_many :images
 end

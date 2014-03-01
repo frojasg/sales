@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20140301014720) do
 
   create_table "images", force: true do |t|
+    t.string   "uuid",       limit: 36
     t.string   "capture"
     t.string   "url"
     t.integer  "item_id"
@@ -21,8 +22,10 @@ ActiveRecord::Schema.define(version: 20140301014720) do
   end
 
   add_index "images", ["item_id"], name: "index_images_on_item_id"
+  add_index "images", ["uuid"], name: "index_images_on_uuid"
 
   create_table "items", force: true do |t|
+    t.string   "uuid",        limit: 36
     t.string   "title"
     t.string   "status"
     t.text     "description"
@@ -32,5 +35,6 @@ ActiveRecord::Schema.define(version: 20140301014720) do
   end
 
   add_index "items", ["status"], name: "index_items_on_status"
+  add_index "items", ["uuid"], name: "index_items_on_uuid"
 
 end

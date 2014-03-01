@@ -10,6 +10,10 @@
 #  updated_at :datetime
 #
 
+require './lib/uuid_support'
+
 class Image < ActiveRecord::Base
+  include UUIDSupport
+
   belongs_to :item
 end

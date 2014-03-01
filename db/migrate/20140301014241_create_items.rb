@@ -1,6 +1,7 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
+      t.string :uuid, :limit => 36
       t.string :title
       t.string :status
       t.text :description
@@ -9,5 +10,6 @@ class CreateItems < ActiveRecord::Migration
     end
 
     add_index :items, :status
+    add_index :items, :uuid
   end
 end
