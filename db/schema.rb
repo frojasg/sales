@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140301014720) do
   create_table "items", force: true do |t|
     t.string   "uuid",        limit: 36
     t.string   "title"
-    t.string   "status"
+    t.string   "status",                 default: "available"
     t.text     "description"
     t.integer  "price"
     t.datetime "created_at"
