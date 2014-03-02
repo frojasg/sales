@@ -1,11 +1,12 @@
-require 'sinatra'
-require "sinatra/activerecord"
-require 'rabl'
+Bundler.require(:default)
 
 require "./models/item"
 require "./models/image"
+require "./models/user"
+require "./params/user_parameters"
 
 set :database, "sqlite3:///blog.db"
+set :public_folder, File.dirname(__FILE__) + '/public'
 
 Rabl.register!
 
@@ -23,10 +24,13 @@ get '/items' do
   rabl :items, format: "json"
 end
 
-#post '/items' do
-#  @item = Item.create(params)
-#  rabl :item, format: 'json'
-#end
+post '/users' do
+  @user = User.find_by username: params[:username]
+  unless @user
+    @user = User.create(UserParameters.new(params).permit)
+  end
+  rabl :user, format: 'json'
+end
 
 def html view
   File.read(File.join('public', "#{view}.html"))
