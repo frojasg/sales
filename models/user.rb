@@ -1,20 +1,19 @@
 # == Schema Information
 #
-# Table name: images
+# Table name: users
 #
 #  id         :integer          not null, primary key
 #  uuid       :string(36)
-#  capture    :string(255)
-#  url        :string(255)
-#  item_id    :integer
+#  username   :string(255)
+#  first_name :string(255)
+#  last_name  :string(255)
+#  reference  :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 require './lib/uuid_support'
 
-class Image < ActiveRecord::Base
+class User < ActiveRecord::Base
   include UUIDSupport
-
-  belongs_to :item
 end
