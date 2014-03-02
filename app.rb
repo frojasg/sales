@@ -6,7 +6,12 @@ require "./models/user"
 require "./params/user_parameters"
 
 set :database, "sqlite3:///blog.db"
-set :public_folder, File.dirname(__FILE__) + '/public'
+#set :public_folder, File.dirname(__FILE__) + '/public'
+set :public_folder, ENV['RACK_ENV'] == 'production' ? 'dist' : 'app'
+configure do
+    enable :logging 
+    set :public_folder, ENV['RACK_ENV'] == 'production' ? 'dist' : 'app'
+  end
 
 Rabl.register!
 
@@ -33,5 +38,5 @@ post '/users' do
 end
 
 def html view
-  File.read(File.join('public', "#{view}.html"))
+  File.read(File.join(settings.public_folder, "#{view}.html"))
 end
