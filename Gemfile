@@ -6,6 +6,7 @@ gem "sinatra-activerecord"
 gem "sqlite3"
 gem "rake"
 gem 'uuidtools'
+gem 'compass'
 
 gem 'rabl'
 gem 'oj'
