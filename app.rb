@@ -25,7 +25,7 @@ get '/' do
 end
 
 get '/items' do
-  @items = Item.all[0..1]
+  @items = Item.all
   rabl :items, format: "json"
 end
 
