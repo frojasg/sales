@@ -4,7 +4,8 @@ angular.module('salesApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'underscore'
 ])
   .config(function ($routeProvider) {
     $routeProvider
