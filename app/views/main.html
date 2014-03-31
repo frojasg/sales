@@ -15,11 +15,14 @@
 <div class="row">
   <h4>{{ items.length }} Items </h4>
   <div ng-repeat="list in splitted" class="row">
-    <div ng-repeat="item in list" class="col-md-4">
-      <h4>{{item.title}}</h4>
-      <p>{{item.details}}</p>
-      <img src="{{item.images[0].url || default_image }}" width="100%" ></img>
-      <p><a class="btn btn-success" href="#">Comprar por ${{item.price}} </a></p>
+    <div ng-repeat="item in list" class="col-md-4 item">
+      <a href="#">
+        <img class="image" src="{{item.images[0].url || default_image }}" width="100%" ></img>
+        <div class="content">
+          <h5>{{item.title}}</h5>
+          <span class="price">${{item.price}}<span>
+        </div>
+      </a>
     </div>
   </div>
 </div>
