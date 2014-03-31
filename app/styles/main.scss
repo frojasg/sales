@@ -67,6 +67,10 @@ body {
     margin-top: 28px;
 }
 
+img.image {
+  border-radius: 6px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
