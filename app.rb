@@ -30,7 +30,8 @@ get '/items' do
 end
 
 post '/users' do
-  @user = User.find_by username: params[:username]
+  params = MultiJson.decode request.body.read
+  @user = User.find_by username: params['username']
   unless @user
     @user = User.create(UserParameters.new(params).permit)
   end
