@@ -7,6 +7,6 @@ angular.module('salesApp')
         console.log(response);
         return response.data;
       });
-      return promise
+      return promise;
     };
   });
