@@ -18,6 +18,10 @@ angular.module('salesApp', [
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       }).otherwise({
         redirectTo: '/'
       });
