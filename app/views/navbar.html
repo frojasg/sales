@@ -1,0 +1,12 @@
+<ul class="nav nav-pills pull-right" data-ng-show="logged">
+  <li>
+    <figure><img class="small-avatar" ng-src="{{user.picture.data.url}}"></figure>
+  </li>
+  <li><a ng-href="#register">Hola {{user.name}}</a></li>
+  <li><a class="logout" data-ng-disabled="!facebookReady" data-ng-click="logout()">Logout</a></li>
+</ul>
+<ul class="nav nav-pills pull-right" data-ng-show="!logged">
+  <li><a ng-href="#">About</a></li>
+  <li class="active"><a data-ng-disabled="!facebookReady" data-ng-click="login()">Entra</a></li>
+</ul>
+<h3 class="text-muted">Karin & Kuki sell their stuff</h3>

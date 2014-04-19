@@ -77,7 +77,17 @@ img.avatar {
   height: 100px;
   border: 3px solid #fff;
 }
+img.small-avatar {
+  @extend img.avatar;
+  width: 50px;
+  height: 50px;
+}
 
+.logout {
+  color: white;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
