@@ -5,7 +5,9 @@ angular.module('salesApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'underscore'
+  'ngCookies',
+  'underscore',
+  'facebook'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -20,7 +22,14 @@ angular.module('salesApp', [
       .when('/details/:itemId', {
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       }).otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(['FacebookProvider', function(FacebookProvider) {
+    FacebookProvider.init('824731804211006');
+  }]);

@@ -24,8 +24,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container">
+      <div class="header" ng-controller="RegisterCtrl" ng-include src="'./views/navbar.html'" ></div>
+      <!-- Add your site or application content here -->
+      <div  ng-view=""></div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -54,6 +57,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -63,6 +67,8 @@
         <script src="scripts/services/itemService.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/details.js"></script>
+        <script src="scripts/services/userService.js"></script>
+        <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
 </body>
 </html>
