@@ -18,6 +18,7 @@ Rabl.register!
 Rabl.configure do |config|
   config.include_child_root = false
   config.include_json_root = false
+ # config.view_paths = ['/views']
 end
 
 get '/' do
@@ -26,7 +27,12 @@ end
 
 get '/items' do
   @items = Item.all
-  rabl :items, format: "json"
+  rabl :'items/index', format: 'json'
+end
+
+get '/items/:item_id' do |item_id|
+  @item = Item.find_by_uuid(item_id)
+  rabl :'items/show', :format => "json"
 end
 
 post '/users' do
