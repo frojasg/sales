@@ -10,10 +10,9 @@ angular.module('salesApp')
       return promise;
     };
     this.item = function(item_id) {
-      var promise = $http.get('/items/'+ item_id).them(function(item) {
-        console.log(item);
+      var promise = $http.get('/items/'+ item_id).then(function(response) {
         return response.data;
       });
       return promise;
-    }
+    };
   });
