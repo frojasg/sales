@@ -32,5 +32,4 @@ angular.module('salesApp')
         text: image.capture
       });
     };
-
   });

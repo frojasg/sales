@@ -1,6 +1,21 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-8">
+    <div >
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active">
+          <img ng-src="{{slide.image}}" style="margin:auto;" width="100%">
+          <div class="carousel-caption">
+            <p>{{slide.text}}</p>
+          </div>
+        </slide>
+      </carousel>
+    </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
+    <h2>{{item.title}}</h2>
+    <p>{{item.description}}</p>
+    <div class="price">{{item.price}}</div>
+    <button class="btn btn-large btn-success" type="button">Reservar</button>
   </div>
 </div>
+
