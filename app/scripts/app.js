@@ -7,7 +7,8 @@ angular.module('salesApp', [
   'ngRoute',
   'ngCookies',
   'underscore',
-  'facebook'
+  'facebook',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider) {
     $routeProvider
