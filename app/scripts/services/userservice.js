@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('salesApp')
-  .service('UserService', function UserService($http, $q, $cookieStore, $rootScope, Facebook) {
+  .service('UserService', function UserService($http, $q, localStorageService, $rootScope, Facebook) {
     var self = this;
     this.accessToken;
-    this.user = $cookieStore.get('user');
+    this.user = localStorageService.get('user');
 
     this.getUser = function() { return this.user; };
 
@@ -46,15 +46,15 @@ angular.module('salesApp')
 
     this.logout = function() {
       this.user = null;
-      $cookieStore.remove('user');
-      $cookieStore.remove('logged');
+      localStorageService.remove('user');
+      localStorageService.remove('logged');
       $rootScope.$broadcast('user.logout');
     };
 
     this.clean = function() {
       this.user = null;
-      $cookieStore.remove('user');
-      $cookieStore.remove('logged');
+      localStorageService.remove('user');
+      localStorageService.remove('logged');
       $rootScope.$broadcast('user.clean');
     }
 
@@ -76,8 +76,8 @@ angular.module('salesApp')
 
     this.upsertUser = function(user) {
       user.access_token = this.accessToken;
-      $cookieStore.put('user', user);
-      $cookieStore.put('logged', typeof user !== "undefined");
+      localStorageService.set('user', user);
+      localStorageService.set('logged', typeof user !== "undefined");
       var promise = $http.post('/users', user).then(function(response) {
         return response.data;
       });

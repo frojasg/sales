@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('salesApp')
-  .controller('MainCtrl', function (ItemService, $scope, _) {
+  .controller('MainCtrl', function (ItemService, $scope, _, localStorageService) {
     $scope.default_image = "https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg";
 
     ItemService.items().then(function(items) {

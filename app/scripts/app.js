@@ -8,7 +8,8 @@ angular.module('salesApp', [
   'ngCookies',
   'underscore',
   'facebook',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'LocalStorageModule'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,4 +34,7 @@ angular.module('salesApp', [
   })
   .config(['FacebookProvider', function(FacebookProvider) {
     FacebookProvider.init('824731804211006');
+  }])
+  .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+    localStorageServiceProvider.setPrefix('sales');
   }]);
