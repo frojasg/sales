@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.1.1"
+ruby "2.1.2"
 
 gem 'sinatra'
 gem "sinatra-activerecord"
@@ -16,6 +16,9 @@ gem 'annotate'
 group :development do
   gem "shotgun"
   gem "tux"
-  gem 'debugger'
+  gem 'sass'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'byebug'
 end
 
