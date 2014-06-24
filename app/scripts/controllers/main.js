@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('salesApp')
-  .controller('MainCtrl', function (ItemService, $scope, _, localStorageService) {
-    $scope.default_image = "https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg";
+  .controller('MainCtrl', function (ItemService, $scope, _) {
+    $scope.defaultImage = 'https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg';
 
     ItemService.items().then(function(items) {
       // TODO: I would like to map every item to a special class that contains all this presentation logic
@@ -11,7 +11,7 @@ angular.module('salesApp')
           if(item.images.length > 0) {
             return item.images[0].url;
           } else {
-            return $scope.default_image;
+            return $scope.defaultImage;
           }
         };
         return item;

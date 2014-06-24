@@ -4,14 +4,14 @@ angular.module('salesApp')
   .controller('DetailsCtrl', function ($scope, $routeParams, ItemService) {
     //TODO: ugh, duplicate code, I need to find a way to share constant
     //TODO: Also i have no idea why i'm not using a local copy of this image
-    $scope.default_image = "https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg";
+    $scope.defaultImage = 'https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg';
     $scope.myInterval = 5000;
     var slides = $scope.slides = [];
-    $scope.item_id = $routeParams.item_id;
+    $scope.itemId = $routeParams.itemId;
 
-    ItemService.item($scope.item_id).then(function(item) {
+    ItemService.item($scope.itemId).then(function(item) {
       $scope.item = item;
-      if(item.images.length == 0) {
+      if(item.images.length === 0) {
         $scope.addDefaultImage();
       } else {
         item.images.forEach($scope.addSlide);
@@ -19,8 +19,8 @@ angular.module('salesApp')
     });
 
     $scope.addDefaultImage = function() {
-      $scope.addSlide({url: $scope.default_image, capture: ''});
-    }
+      $scope.addSlide({url: $scope.defaultImage, capture: ''});
+    };
 
     $scope.cleanSlides = function() {
       slides.splice(0, slides.length);

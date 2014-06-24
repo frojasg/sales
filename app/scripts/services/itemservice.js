@@ -8,8 +8,8 @@ angular.module('salesApp')
       });
       return promise;
     };
-    this.item = function(item_id) {
-      var promise = $http.get('/items/'+ item_id).then(function(response) {
+    this.item = function(itemId) {
+      var promise = $http.get('/items/'+ itemId).then(function(response) {
         return response.data;
       });
       return promise;

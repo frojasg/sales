@@ -21,7 +21,7 @@ angular.module('salesApp', [
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
       })
-      .when('/details/:item_id', {
+      .when('/details/:itemId', {
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl'
       })

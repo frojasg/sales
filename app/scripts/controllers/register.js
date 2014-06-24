@@ -12,15 +12,17 @@ angular.module('salesApp')
         $scope.user = user;
         $scope.logged = true;
       });
-      $scope.$on('user.logout', function(event) {
+
+      $scope.$on('user.logout', function() {
         $scope.byebye = true;
         $scope.user = null;
         $scope.logged = false;
         $timeout(function() {
           $scope.byebye = false;
-        }, 2000)
+        }, 2000);
       });
-      $scope.$on('user.clean', function(event) {
+
+      $scope.$on('user.clean', function() {
         $scope.user = null;
         $scope.logged = false;
       });
@@ -35,4 +37,4 @@ angular.module('salesApp')
       );
       $scope.login = UserService.login;
       $scope.logout = UserService.logout;
-  });
+    });
