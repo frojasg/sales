@@ -12,13 +12,16 @@ gem 'rabl'
 gem 'oj'
 
 gem 'annotate'
+gem 'typhoeus'
 
-group :development do
+group :development, :testing do
+  gem 'rspec'
   gem "shotgun"
   gem "tux"
   gem 'sass'
   gem 'pry'
   gem 'pry-byebug'
   gem 'byebug'
+  gem 'vcr'
 end
 
