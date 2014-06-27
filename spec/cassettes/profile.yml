@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=CAALuFtY5lz4BABBY3bjNK8v4uZCxRrcGuzFESshbb8pvBJY37IeRZBMRykKW6jX7Bc3t9DFDVC1qSoWzKc2xOh8zrU1I3cwMAZCvsrN9zrH7yUiwjftFcil3ZAw2JfcRHBcFRZB6dzRKDbQUiPCfAc6k8StJWZAQgUbonPcXsvg39XxRLZAiDg1NwjxqtfwsoAGgvnWGW4GhwZDZD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - '2013-11-24T23:29:18+0000'
+      ETag:
+      - '"9d9a80c61de5b6f14c4414626e29fd51d25a1020"'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-FB-Rev:
+      - '1307954'
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-FB-Debug:
+      - a0D1TUfcXnsu1evDLgtqyAS9Yf3De3g8pPhOpcyJhSPhNbUXGE7PdBI476jMc3VpM0ENbwi9Okl9LX1ohZBx1A==
+      Date:
+      - Fri, 27 Jun 2014 04:14:04 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"712817506","education":[{"school":{"id":"118314164918771","name":"Colegio
+        de la Salle - Talca"},"type":"High School"},{"school":{"id":"107961325903107","name":"UTalca"},"type":"College","year":{"id":"136328419721520","name":"2009"}},{"school":{"id":"103117596395173","name":"University
+        of Talca"},"type":"College"},{"school":{"id":"105700156131646","name":"Dresden
+        University of Technology"},"type":"College"}],"first_name":"Francisco","gender":"male","hometown":{"id":"108445209187309","name":"Talca,
+        Chile"},"languages":[{"id":"108177092548456","name":"Espa\u00f1ol"},{"id":"114829988533361","name":"Ingl\u00e9s"},{"id":"106075916090190","name":"Alem\u00e1n"}],"last_name":"Rojas","link":"https:\/\/www.facebook.com\/frojasg","location":{"id":"112371848779363","name":"Santiago,
+        Chile"},"locale":"en_US","name":"Francisco Rojas","timezone":-4,"updated_time":"2013-11-24T23:29:18+0000","username":"frojasg","verified":true,"work":[{"employer":{"id":"193412994017660","name":"Groupon
+        LatAm"},"location":{"id":"112371848779363","name":"Santiago, Chile"},"position":{"id":"108046495890265","name":"Team
+        leader"},"start_date":"2011-07-01"},{"end_date":"2011-07-01","employer":{"id":"47422049014","name":"Equifax"},"location":{"id":"112371848779363","name":"Santiago,
+        Chile"},"position":{"id":"149416765070413","name":"Junior Software Engineer"},"start_date":"2010-08-01"},{"employer":{"id":"103134513059975","name":"University
+        of Talca"}},{"employer":{"id":"112265325455842","name":"GNOME"}},{"employer":{"id":"137372306292092","name":"Groupon
+        Chile"}},{"employer":{"id":"201213563389504","name":"Groupon LatAm"}}]}'
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://graph.facebook.com/me?access_token=CAALuFtY5lz4BABBY3bjNK8v4uZCxRrcGuzFESshbb8pvBJY37IeRZBMRykKW6jX7Bc3t9DFDVC1qSoWzKc2xOh8zrU1I3cwMAZCvsrN9zrH7yUiwjftFcil3ZAw2JfcRHBcFRZB6dzRKDbQUiPCfAc6k8StJWZAQgUbonPcXsvg39XxRLZAiDg1NwjxqtfwsoAGgvnWGW4GhwZDZD
+  recorded_at: Fri, 27 Jun 2014 04:14:05 GMT
+recorded_with: VCR 2.9.2

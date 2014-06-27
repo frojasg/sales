@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://graph.facebook.com/me?access_token=invalid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      WWW-Authenticate:
+      - OAuth "Facebook Platform" "invalid_token" "Invalid OAuth access token."
+      Content-Type:
+      - application/json; charset=UTF-8
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-FB-Rev:
+      - '1307954'
+      Cache-Control:
+      - no-store
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-FB-Debug:
+      - S0u2l3c8M44+GycDJdsTcmyBJl/u5+hbzGv0y5mlN1j82uLHEr614mlhKogdT9nNAMz7V6QAzr/gcf4IXk6B7w==
+      Date:
+      - Fri, 27 Jun 2014 04:14:07 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '86'
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"Invalid OAuth access token.","type":"OAuthException","code":190}}'
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://graph.facebook.com/me?access_token=invalid
+  recorded_at: Fri, 27 Jun 2014 04:14:07 GMT
+recorded_with: VCR 2.9.2
