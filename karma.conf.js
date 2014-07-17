@@ -17,6 +17,11 @@ module.exports = function(config) {
       'app/bower_components/angular-cookies/angular-cookies.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/angular-underscore-module/angular-underscore-module.js',
+      'app/bower_components/angular-facebook/lib/angular-facebook.js',
+      'app/bower_components/angular-local-storage/angular-local-storage.js',
+      'app/bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'app/bower_components/underscore/underscore.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
@@ -47,6 +52,7 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: ['Chrome'],
+    //browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

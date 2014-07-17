@@ -6,13 +6,13 @@ describe('Service: Itemservice', function () {
   beforeEach(module('salesApp'));
 
   // instantiate service
-  var Itemservice;
-  beforeEach(inject(function (_Itemservice_) {
-    Itemservice = _Itemservice_;
+  var ItemService;
+  beforeEach(inject(function (_ItemService_) {
+    ItemService = _ItemService_;
   }));
 
   it('should do something', function () {
-    expect(!!Itemservice).toBe(true);
+    expect(!!ItemService).toBe(true);
   });
 
 });
