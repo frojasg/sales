@@ -6,3 +6,4 @@ app/bower_components
 *.db
 *.swp
 app/styles/*.css
+coverage/

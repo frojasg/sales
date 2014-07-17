@@ -15,15 +15,20 @@ gem 'oj'
 gem 'annotate'
 gem 'typhoeus'
 
-group :development, :testing do
-  gem 'rspec'
+group :development, :test do
   gem 'sqlite3'
-  gem "shotgun"
-  gem "tux"
+  gem 'shotgun'
+  gem 'tux'
   gem 'sass'
   gem 'pry'
   gem 'pry-byebug'
   gem 'byebug'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'simplecov'
   gem 'vcr'
 end
 
