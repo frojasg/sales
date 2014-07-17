@@ -1,10 +1,8 @@
 require 'sinatra'
 Bundler.require(:default, settings.environment)
-
 require './config/environments'
-
 require './models/all'
-require "./params/user_parameters"
+require './services/all'
 
 get '/' do
   html :index
@@ -22,19 +20,15 @@ end
 
 post '/users' do
   params = MultiJson.decode request.body.read
-  @user = User.find_by username: params['username']
-  unless @user
-    @user = User.create(UserParameters.new(params).permit)
+  @user = UserService.user params['access_token']
+  if @user.exist?
+    rabl :user, format: 'json'
+  else
+    status 404
   end
-  rabl :user, format: 'json'
 end
 
 def html view
   File.read(File.join(settings.public_folder, "#{view}.html"))
 end
 
-after do
-  # Close the connection after the request is done so that we don't
-  # deplete the ActiveRecord connection pool.
-  ActiveRecord::Base.connection.close
-end

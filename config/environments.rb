@@ -25,3 +25,9 @@ Rabl.configure do |config|
   config.include_child_root = false
   config.include_json_root = false
 end
+
+after do
+  # Close the connection after the request is done so that we don't
+  # deplete the ActiveRecord connection pool.
+  # ActiveRecord::Base.connection.close
+end
