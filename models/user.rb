@@ -16,4 +16,8 @@ require './lib/uuid_support'
 
 class User < ActiveRecord::Base
   include UUIDSupport
+
+  def exist?
+    true
+  end
 end
