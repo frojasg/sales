@@ -45,12 +45,13 @@ angular.module('salesApp')
 
     this.login = function() {
       return self.fetchUser().then(function() {
+      }, self.authorization).then(function() {
         self.me().then(function(user){
           self.upsertUser(user);
           self.user = user;
           $rootScope.$broadcast('user.logged', self.user);
         });
-      }, self.authorization);
+      });
     };
 
     this.logout = function() {
