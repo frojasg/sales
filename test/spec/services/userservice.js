@@ -43,6 +43,42 @@ describe('Service: Userservice', function () {
       it('the user gave access to our app', function() {
         this.f({status: 'connected', authResponse: {accessToken: '123'}});
         this.result.then(this.onComplete);
+        expect(UserService.accessToken).toEqual('123')
+        $rootScope.$digest();
+        expect(this.onComplete).toHaveBeenCalledWith({status: 'connected', authResponse: {accessToken: '123'}});
+      });
+
+      it('the user gave not access to our app', function() {
+        this.f({status: 'rejected'})
+        this.result.then(function(){}, this.onComplete);
+        $rootScope.$digest();
+        expect(this.onComplete).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('authorization', function() {
+    beforeEach(function() {
+      spyOn(Facebook, 'login');
+    });
+
+    it('We use facebook function', function() {
+      var result = UserService.authorization();
+      expect(Facebook.login).toHaveBeenCalled();
+      expect(Facebook.login.calls.length).toEqual(1);
+    });
+
+    describe('when callback is used', function() {
+      beforeEach(function() {
+        this.result = UserService.authorization();
+        this.f = Facebook.login.mostRecentCall.args[0];
+        this.onComplete = jasmine.createSpy('onComplete');
+      });
+
+      it('the user gave access to our app', function() {
+        this.f({status: 'connected', authResponse: {accessToken: '123'}});
+        this.result.then(this.onComplete);
+        expect(UserService.accessToken).toEqual('123')
         $rootScope.$digest();
         expect(this.onComplete).toHaveBeenCalledWith({status: 'connected', authResponse: {accessToken: '123'}});
       });

@@ -9,6 +9,7 @@ angular.module('salesApp')
     this.getUser = function() { return this.user; };
 
     this.isLogged = function () { return !(typeof this.user === 'undefined' || this.user === null);};
+
     $rootScope.$on('Facebook:statusChange', function(ev, data) {
       if (data.status === 'connected') {
         self.me().then(function(user){
@@ -21,9 +22,9 @@ angular.module('salesApp')
       }
     });
 
-    this.fetchUser = function() {
+    this.facebook = function(authMethod) {
       var deferred = $q.defer();
-      Facebook.getLoginStatus(function(response) {
+      Facebook[authMethod](function(response) {
         if (response.status === 'connected') {
           self.accessToken = response.authResponse.accessToken;
           deferred.resolve(response);
@@ -32,6 +33,14 @@ angular.module('salesApp')
         }
       });
       return deferred.promise;
+    };
+
+    this.fetchUser = function() {
+      return this.facebook('getLoginStatus');
+    };
+
+    this.authorization = function() {
+      return this.facebook('login');
     };
 
     this.login = function() {
@@ -56,22 +65,6 @@ angular.module('salesApp')
       localStorageService.remove('user');
       localStorageService.remove('logged');
       $rootScope.$broadcast('user.clean');
-    };
-
-    this.authorization = function() {
-      var deferred = $q.defer();
-      Facebook.login(function(response) {
-        if(response.status === 'connected') {
-          deferred.resolve(response);
-        } else {
-          deferred.reject();
-        }
-      });
-      return deferred.promise;
-    };
-
-    this.updateAccessToken = function (userId, accessToken) {
-      $http.put('users/'+userId, {access_token: accessToken});
     };
 
     this.upsertUser = function(user) {
