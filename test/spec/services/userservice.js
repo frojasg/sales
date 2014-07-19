@@ -11,15 +11,31 @@ describe('Service: Userservice', function () {
   var Facebook;
   var $rootScope;
 
-  beforeEach(inject(function (_UserService_, _$httpBackend_, _Facebook_, _$rootScope_) {
+  beforeEach(inject(function (_UserService_, _Facebook_, _$rootScope_) {
     UserService = _UserService_;
-    $httpBackend = _$httpBackend_;
     Facebook = _Facebook_;
     $rootScope = _$rootScope_;
   }));
 
+  beforeEach(inject(function($injector) {
+    $httpBackend = $injector.get('$httpBackend');
+  }));
+
   it('should do something', function () {
     expect(!!UserService).toBe(true);
+  });
+
+  describe('upsertUser', function() {
+    beforeEach(function() {
+      UserService.accessToken = '1234';
+    });
+
+    it('send access token to the server', function() {
+      expect(!!$httpBackend).toBe(true);
+      $httpBackend.expectPOST('/users', {'access_token': '1234'}).respond(201, {user: {id: '123'}});
+      UserService.upsertUser();
+      $httpBackend.flush();
+    });
   });
 
   describe('fetchUser', function() {
@@ -28,7 +44,7 @@ describe('Service: Userservice', function () {
     });
 
     it('We use facebook function', function() {
-      var result = UserService.fetchUser();
+      UserService.fetchUser();
       expect(Facebook.getLoginStatus).toHaveBeenCalled();
       expect(Facebook.getLoginStatus.calls.length).toEqual(1);
     });
@@ -43,13 +59,13 @@ describe('Service: Userservice', function () {
       it('the user gave access to our app', function() {
         this.f({status: 'connected', authResponse: {accessToken: '123'}});
         this.result.then(this.onComplete);
-        expect(UserService.accessToken).toEqual('123')
+        expect(UserService.accessToken).toEqual('123');
         $rootScope.$digest();
         expect(this.onComplete).toHaveBeenCalledWith({status: 'connected', authResponse: {accessToken: '123'}});
       });
 
       it('the user gave not access to our app', function() {
-        this.f({status: 'rejected'})
+        this.f({status: 'rejected'});
         this.result.then(function(){}, this.onComplete);
         $rootScope.$digest();
         expect(this.onComplete).toHaveBeenCalled();
@@ -63,7 +79,7 @@ describe('Service: Userservice', function () {
     });
 
     it('We use facebook function', function() {
-      var result = UserService.authorization();
+      UserService.authorization();
       expect(Facebook.login).toHaveBeenCalled();
       expect(Facebook.login.calls.length).toEqual(1);
     });
@@ -78,13 +94,13 @@ describe('Service: Userservice', function () {
       it('the user gave access to our app', function() {
         this.f({status: 'connected', authResponse: {accessToken: '123'}});
         this.result.then(this.onComplete);
-        expect(UserService.accessToken).toEqual('123')
+        expect(UserService.accessToken).toEqual('123');
         $rootScope.$digest();
         expect(this.onComplete).toHaveBeenCalledWith({status: 'connected', authResponse: {accessToken: '123'}});
       });
 
       it('the user gave not access to our app', function() {
-        this.f({status: 'rejected'})
+        this.f({status: 'rejected'});
         this.result.then(function(){}, this.onComplete);
         $rootScope.$digest();
         expect(this.onComplete).toHaveBeenCalled();

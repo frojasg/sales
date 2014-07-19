@@ -46,9 +46,11 @@ angular.module('salesApp')
     this.login = function() {
       return self.fetchUser().then(function() {
       }, self.authorization).then(function() {
-        self.me().then(function(user){
-          self.upsertUser(user);
+        self.upsertUser();
+        self.me().then(function(user) {
           self.user = user;
+          localStorageService.set('user', user);
+          localStorageService.set('logged', typeof user !== 'undefined');
           $rootScope.$broadcast('user.logged', self.user);
         });
       });
@@ -68,11 +70,9 @@ angular.module('salesApp')
       $rootScope.$broadcast('user.clean');
     };
 
-    this.upsertUser = function(user) {
-      user.access_token = this.accessToken;
-      localStorageService.set('user', user);
-      localStorageService.set('logged', typeof user !== 'undefined');
-      var promise = $http.post('/users', user).then(function(response) {
+    this.upsertUser = function() {
+      var data = {'access_token': this.accessToken};
+      var promise = $http.post('/users', data).then(function(response) {
         return response.data;
       });
       return promise;
