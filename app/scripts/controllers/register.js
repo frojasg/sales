@@ -40,12 +40,4 @@ angular.module('salesApp')
       );
       $scope.login = UserService.login;
       $scope.logout = UserService.logout;
-
-      $scope.$on('user.not_authorized', function() {
-        $scope.alert = true;
-      });
-
-      $scope.closeAlert = function() {
-        $scope.alert = false;
-      };
     });
