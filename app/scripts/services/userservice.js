@@ -27,32 +27,35 @@ angular.module('salesApp')
       Facebook[authMethod](function(response) {
         if (response.status === 'connected') {
           self.accessToken = response.authResponse.accessToken;
-          deferred.resolve(response);
+          return deferred.resolve(response);
         } else {
-          deferred.reject();
+          return deferred.reject();
         }
       });
       return deferred.promise;
     };
 
     this.fetchUser = function() {
-      return this.facebook('getLoginStatus');
+      return self.facebook('getLoginStatus');
     };
 
     this.authorization = function() {
-      return this.facebook('login');
+      return self.facebook('login');
     };
 
     this.login = function() {
-      return self.fetchUser().then(function() {
-      }, self.authorization).then(function() {
+      return self.fetchUser().then(function() { }, self.authorization).then(function() {
         self.upsertUser();
-        self.me().then(function(user) {
+        return self.me().then(function(user) {
           self.user = user;
           localStorageService.set('user', user);
           localStorageService.set('logged', typeof user !== 'undefined');
           $rootScope.$broadcast('user.logged', self.user);
+          return user;
         });
+      }, function() {
+        $rootScope.$broadcast('user.not_authorized');
+        return $q.reject('not_authorized');
       });
     };
 
