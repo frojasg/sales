@@ -5,26 +5,29 @@ angular.module('salesApp')
       $scope.user = UserService.getUser();
       $scope.userService = UserService;
       $scope.logged = UserService.isLogged();
+      $scope.alert = false;
+      this.scope = $scope;
+      var self = this;
 
       // Defining user logged status
       $scope.$on('user.logged', function(event, user) {
-        $scope.saludation = true;
-        $scope.user = user;
-        $scope.logged = true;
+        self.scope.saludation = true;
+        self.scope.user = user;
+        self.scope.logged = true;
       });
 
       $scope.$on('user.logout', function() {
-        $scope.byebye = true;
-        $scope.user = null;
-        $scope.logged = false;
+        self.scope.byebye = true;
+        self.scope.user = null;
+        self.scope.logged = false;
         $timeout(function() {
-          $scope.byebye = false;
+          self.scope.byebye = false;
         }, 2000);
       });
 
       $scope.$on('user.clean', function() {
-        $scope.user = null;
-        $scope.logged = false;
+        self.scope.user = null;
+        self.scope.logged = false;
       });
 
       $scope.$watch(
@@ -37,4 +40,12 @@ angular.module('salesApp')
       );
       $scope.login = UserService.login;
       $scope.logout = UserService.logout;
+
+      $scope.$on('user.not_authorized', function() {
+        $scope.alert = true;
+      });
+
+      $scope.closeAlert = function() {
+        $scope.alert = false;
+      };
     });
