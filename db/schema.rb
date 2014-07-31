@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302002055) do
+ActiveRecord::Schema.define(version: 20140726060607) do
 
   create_table "images", force: true do |t|
     t.string   "uuid",       limit: 36
@@ -36,6 +37,20 @@ ActiveRecord::Schema.define(version: 20140302002055) do
 
   add_index "items", ["status"], name: "index_items_on_status"
   add_index "items", ["uuid"], name: "index_items_on_uuid"
+
+  create_table "orders", force: true do |t|
+    t.string   "uuid",        limit: 36
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.datetime "purchase_at"
+    t.integer  "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["item_id"], name: "index_orders_on_item_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["uuid"], name: "index_orders_on_uuid"
 
   create_table "users", force: true do |t|
     t.string   "uuid",       limit: 36

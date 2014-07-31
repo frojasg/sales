@@ -14,8 +14,21 @@ get '/items' do
 end
 
 get '/items/:item_id' do |item_id|
-  @item = Item.find_by_uuid(item_id)
+  @item = Item.find_by uuid: item_id
   rabl :'items/show', :format => 'json'
+end
+
+post '/items/:item_id/order' do |item_id|
+  @item = Item.find_by uuid: item_id
+  params = MultiJson.decode request.body.read
+  @user = UserService.user params['access_token']
+  if @item.present? && @user.exist?
+    @order = OrderService.purchase(@item, @user)
+
+    rabl :'orders/show', :format => 'json'
+  else
+    status 404
+  end
 end
 
 post '/users' do
