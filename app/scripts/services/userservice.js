@@ -47,6 +47,7 @@ angular.module('salesApp')
       return self.fetchUser().then(function() { }, self.authorization).then(function() {
         self.upsertUser();
         return self.me().then(function(user) {
+          user.access_token = self.accessToken;
           self.user = user;
           localStorageService.set('user', user);
           localStorageService.set('logged', typeof user !== 'undefined');

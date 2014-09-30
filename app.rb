@@ -1,5 +1,5 @@
-require 'sinatra'
 Bundler.require(:default, settings.environment)
+require 'sinatra'
 require './config/environments'
 require './models/all'
 require './services/all'

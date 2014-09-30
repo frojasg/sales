@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('salesApp')
-  .controller('DetailsCtrl', function ($scope, $routeParams, ItemService) {
+  .controller('DetailsCtrl', function ($scope, $routeParams, $location, ItemService, CartService, UserService) {
     //TODO: ugh, duplicate code, I need to find a way to share constant
     //TODO: Also i have no idea why i'm not using a local copy of this image
     $scope.defaultImage = 'https://mashedmusings.files.wordpress.com/2012/03/christmas-shopping-for-women-3.jpg';
@@ -32,4 +32,17 @@ angular.module('salesApp')
         text: image.capture
       });
     };
+
+    $scope.buy = function() {
+      UserService.login().then(function() {
+        CartService.clean();
+        CartService.add($scope.item);
+        CartService.checkout().then(function() {
+        });
+      }, function() {
+        //the user is not logged in so we do nothing
+      });
+    };
+
+
   });
