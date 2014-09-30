@@ -47,5 +47,20 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "description": "Sales App =====",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frojasg/sales.git"
+  },
+  "author": "Francisco Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frojasg/sales/issues"
+  },
+  "homepage": "https://github.com/frojasg/sales"
 }
