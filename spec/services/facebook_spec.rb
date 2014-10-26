@@ -13,7 +13,7 @@ describe Facebook do
     it 'fetch user profile information from facebook' do
       VCR.use_cassette 'profile' do
         user = Facebook.me(access_token)
-        expect(user).to eq({username: 'frojasg', first_name: 'Francisco', last_name: 'Rojas', id: '712817506'})
+        expect(user).to eq(first_name: 'Francisco', last_name: 'Rojas', id: '712817506')
       end
     end
   end

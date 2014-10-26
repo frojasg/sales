@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726060607) do
+ActiveRecord::Schema.define(version: 20141026030718) do
 
   create_table "images", force: true do |t|
     t.string   "uuid",       limit: 36
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20140726060607) do
 
   create_table "users", force: true do |t|
     t.string   "uuid",       limit: 36
-    t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "reference"
