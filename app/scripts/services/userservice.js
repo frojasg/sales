@@ -12,7 +12,8 @@ angular.module('salesApp')
 
     $rootScope.$on('Facebook:statusChange', function(ev, data) {
       if (data.status === 'connected') {
-        self.me().then(function(user){
+        self.accessToken = data.authResponse.accessToken;
+        self.me().then(function(user) {
           self.upsertUser(user);
           self.user = user;
           $rootScope.$broadcast('user.logged', self.user);
@@ -84,7 +85,14 @@ angular.module('salesApp')
 
     this.me = function() {
       var deferred = $q.defer();
-      Facebook.api('me?fields=picture.height(150),name,first_name,last_name,username,id', deferred.resolve);
+      Facebook.api('me?fields=picture.height(150),name,first_name,last_name,id', function(response) {
+        if (response.error === undefined) {
+          deferred.resolve(response);
+        } else {
+          console.log('facebook api is broken :(')
+          deferred.reject(response);
+        }
+      });
       return deferred.promise;
     };
 
