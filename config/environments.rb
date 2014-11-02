@@ -1,3 +1,5 @@
+$LOAD_PATH.unshift(File.expand_path("../..", __FILE__))
+
 configure :development do
   set :database, 'sqlite3:blog.db'
   set :show_exceptions, true

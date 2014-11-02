@@ -1,8 +1,8 @@
 require 'sinatra'
 Bundler.require(:default, settings.environment)
-require './config/environments'
-require './models/all'
-require './services/all'
+require_relative './config/environments'
+require 'models'
+require 'services'
 
 get '/' do
   html :index
