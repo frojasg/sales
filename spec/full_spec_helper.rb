@@ -11,6 +11,8 @@ RACK_ENV = "test"
 require File.join(File.dirname(__FILE__), "..", "app.rb")
 require "rack/test"
 require "rspec"
+require 'factory_girl'
+require_relative 'factories'
 
 Bundler.require(:default, settings.environment, 'test')
 set :environment, :test
@@ -21,7 +23,9 @@ ActiveRecord::Base.logger = nil
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+  conf.include FactoryGirl::Syntax::Methods
   conf.before(:suite) do
+    FactoryGirl.lint
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end

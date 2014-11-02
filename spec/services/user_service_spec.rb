@@ -15,6 +15,7 @@ describe UserService do
       expect(user.first_name).to eq('Francisco')
       expect(user.last_name).to eq('Rojas')
       expect(user.uuid).not_to be_nil
+      expect(user.access_token).to eq access_token
       expect(user.exist?).to be true
     end
 
@@ -30,16 +31,15 @@ describe UserService do
   context 'when the user exist in our database' do
     let(:access_token) {'some_access_token'}
 
-    let!(:expected_user) {
-      User.create(first_name: 'Francisco', last_name: 'Rojas', reference: '1234')
-    }
+    let!(:expected_user) { create :user }
 
     it 'return an User for a given access token' do
       allow(Facebook).to receive(:me).with(access_token).and_return(
-        first_name: 'Francisco', last_name: 'Rojas', id: '1234')
+        first_name: 'Francisco', last_name: 'Rojas', id: '123')
 
       user = UserService.user(access_token)
       expect(user.uuid).to eq(expected_user.uuid)
+      expect(user.access_token).to eq access_token
       expect(user.exist?).to be true
     end
   end

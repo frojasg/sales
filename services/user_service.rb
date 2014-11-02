@@ -8,9 +8,9 @@ class UserService
 
   def self.user(access_token)
     fb_user = Facebook.me(access_token)
-    user = User.find_or_create_by username: fb_user[:username]
-    fb_user[:reference] = fb_user[:id]
-    user.update_attributes(fb_user.except(:username, :id))
+    user = User.find_or_initialize_by reference: fb_user[:id]
+    params = fb_user.except(:id).merge(access_token: access_token)
+    user.update_attributes(params)
     user
   rescue
     NoUser.new

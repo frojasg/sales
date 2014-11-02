@@ -30,6 +30,7 @@ group :test do
   gem 'rspec'
   gem 'simplecov'
   gem 'vcr'
+  gem 'factory_girl'
 end
 
 group :production do
