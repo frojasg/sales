@@ -14,6 +14,7 @@ gem 'oj'
 
 gem 'annotate'
 gem 'typhoeus'
+gem 'state_machine'
 
 group :development, :test do
   gem 'sqlite3'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141026030718) do
+ActiveRecord::Schema.define(version: 20141102203808) do
 
   create_table "images", force: true do |t|
     t.string   "uuid",       limit: 36
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141026030718) do
     t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   add_index "orders", ["item_id"], name: "index_orders_on_item_id"
@@ -53,12 +54,13 @@ ActiveRecord::Schema.define(version: 20141026030718) do
   add_index "orders", ["uuid"], name: "index_orders_on_uuid"
 
   create_table "users", force: true do |t|
-    t.string   "uuid",       limit: 36
+    t.string   "uuid",         limit: 36
     t.string   "first_name"
     t.string   "last_name"
     t.string   "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "access_token"
   end
 
   add_index "users", ["uuid"], name: "index_users_on_uuid"

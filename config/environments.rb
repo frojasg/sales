@@ -33,3 +33,14 @@ after do
   # deplete the ActiveRecord connection pool.
   # ActiveRecord::Base.connection.close
 end
+
+# Fix State machine for Active Record 4.1 http://dev.mensfeld.pl/tag/state-machine/
+module StateMachine
+  # Extensions for integrations of state machine
+  module Integrations
+    # ActiveModel extension that fixes the non-public around_validation error
+    module ActiveModel
+      send :public, :around_validation
+    end
+  end
+end
