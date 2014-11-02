@@ -1,7 +1,14 @@
 $LOAD_PATH.unshift(File.expand_path("../..", __FILE__))
 
 configure :development do
-  set :database, 'sqlite3:blog.db'
+  set :database, 'sqlite3:sales.db'
+  set :show_exceptions, true
+  set :public_folder, 'app'
+end
+
+configure :test do
+  set :database, 'sqlite3:sales_test.db'
+  set :show_exceptions, true
   set :show_exceptions, true
   set :public_folder, 'app'
 end

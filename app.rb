@@ -41,6 +41,10 @@ post '/users' do
   end
 end
 
+def body_params
+  @body_params ||= MultiJson.decode request.body.read
+end
+
 def html view
   File.read(File.join(settings.public_folder, "#{view}.html"))
 end
